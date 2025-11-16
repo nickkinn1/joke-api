@@ -1,14 +1,4 @@
-const path = require("path")
-const root = path.join(__dirname, "public")
-
-const express = require("express")
-const app = express()
-
-app.use(express.json())
-app.use(express.static("public"))
-
-
-const jokes = [
+[
   {
     "id": 1,
     "joke": "Why did the coffee file a police report?",
@@ -60,23 +50,3 @@ const jokes = [
     "punchline": "Because it saw the salad dressing."
   }
 ]
-
-
-// Front-end Routes
-app.get("/", (req, res) => {
-    res.sendFile("index.html", { root })
-})
-
-
-// API Routes
-app.get("/api/v1/random-joke", (req, res) => {
-    const randomNum = Math.floor(Math.random() * jokes.length)
-    res.send(jokes[randomNum])
-})
-
-
-app.listen("3000", () => {
-    console.log("http://localhost:3000")
-})
-
-
